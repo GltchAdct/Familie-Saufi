@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Mitglieder – Familie Saufi🍻</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: white;
+  background: radial-gradient(circle at 20% 30%, rgba(255,152,0,0.15), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(233,30,99,0.12), transparent 40%),
+              #111;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background-color: #000;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.menu-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: black;
+  background-color: #ff9800;
+}
+
+#sideMenu a.activePage {
+  background-color: #d35400;
+  color: white;
+  box-shadow: inset 5px 0 0 #f39c12;
+  font-weight: bold;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  border-bottom: 2px solid #ff9800;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.karten {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.karten section {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+  max-width: 90%; /* passt sich kleinen Bildschirmen an */
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.karten section:hover {
+  transform: translateY(-8px);
+  border: 1px solid #ff9800;
+  box-shadow: 0 0 20px rgba(255,152,0,0.4);
+}
+
+.karten img {
+  width: 100%;
+  height: auto; /* Bild bleibt proportional */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.karten a {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #ff9800;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.karten a i {
+  margin-right: 6px;
+}
+
+.karten a:hover {
+  color: #e91e63;
+  transform: scale(1.05);
+}
+
+audio {
+  width: 100%;
+  margin-top: 10px;
+}
+
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 25px 10px;
+  margin-top: 60px;
+  border-top: 2px solid #ff9800;
+}
+
+footer p {
+  margin: 5px 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+#sideMenu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+#sideMenu a {
+  padding: 12px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+#sideMenu a:hover {
+  background-color: #ff9800;
+  color: black;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  z-index: 900;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Media Queries für Tablet und Handy */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 36px;
+  }
+  .karten section {
+    width: 45%; /* zwei Karten nebeneinander */
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 28px;
+  }
+  .karten section {
+    width: 90%; /* eine Karte pro Reihe */
+  }
+}</style>
+</head>
+
+<body>
+
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<div id="sideMenu">
+  <a href="javascript:void(0)" class="closeBtn" onclick="toggleMenu()">×</a>
+  <a href="familiesaufi.html">Startseite 🏠</a>
+  <a href="mitglieder.html">Mitglieder 👨‍👩‍👧‍👦</a>
+  <a href="veranstaltungen.html">Veranstaltungen📆</a>
+</div>
+
+<header>
+  <h1 style="font-size: 50px;"><b>Unsere Mitglieder 👨‍👩‍👧‍👦</b></h1>
+</header>
+
+<nav>
+  <div class="menu-button">
+    <a href="#" onclick="toggleMenu()">☰ Menü</a>
+  </div>
+</nav>
+
+<main>
+
+<section>
+  <h2>Mitglieder</h2>
+
+  <div class="karten">
+
+    <!-- Jamie -->
+    <section>
+      <h3>Jamie🎸</h3>
+      <a href="https://instagram.com/jamie.hbs06infarbe" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <img src="Jamie.jpg" alt="Jamie">
+      <p>Ich bin Jamie, die Person, die diese Webseite erstellt und Papa der Gruppe.</p>
+      <h4>Fav. Song</h4>
+      <audio controls>
+        <source src="jamie_song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <!-- Sam -->
+    <section>
+      <h3>Sam</h3>
+      <a href="https://instagram.com/matrixknick" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <img src="Sam.jpg" alt="Sam">
+      <p>Das ist meine Freundin, mit der ich seit ca. 2,5 Jahren zusammen bin und gleichzeitig Mama der Gruppe.</p>
+      <h4>Fav. Song</h4>
+      <audio controls>
+        <source src="sam_song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <!-- Esther -->
+    <section>
+      <h3>Esther</h3>
+      <a href="https://instagram.com/esthxr.xx" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <img src="Esther.jpg" alt="Esther">
+      <p>Esther ist die Partymaus der Gruppe und verzaubert uns mit ihrer Mundharmonika.</p>
+      <h4>Fav. Song</h4>
+      <audio controls>
+        <source src="esther_song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <!-- David -->
+    <section>
+      <h3>David</h3>
+      <a href="https://instagram.com/david._.n007" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <img src="David.jpg" alt="David">
+      <p>David ist der Therapeut der Gruppe – man kann mit ihm über alles reden. Außerdem will er jedem ein Auto andrehen.</p>
+      <h4>Fav. Song</h4>
+      <audio controls>
+        <source src="david_song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <!-- Hannah -->
+    <section>
+      <h3>Hannah</h3>
+      <a href="https://instagram.com/hxvnah.stl" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <img src="Hannah.jpg" alt="Hannah">
+      <p>Mit Dustin eine der schlauesten Personen der Gruppe. Außerdem hat sie die Sehkraft eines Maulwurfes, trotzdem haben wir sie ganz doll lieb.</p>
+      <h4>Fav. Song</h4>
+      <audio controls>
+        <source src="hannah_song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <!-- Dustin -->
+    <section>
+      <h3>Dustin</h3>
+      <a href="https://instagram.com/dustin_a07" target="_blank">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <img src="Dustin.jpg" alt="Dustin">
+      <p>Dustin ist (leider) am wenigsten mit dabei, wEiL eR jA wEgZiEhEn MuSsTe!!1! (ist aber okay). Wenn er aber mit feiert, dann richtig. Außerdem ist er, wie schon bei Hannah geschrieben, mit ihr die schlauste Person.</p>
+      <h4>Fav. Song</h4>
+      <audio controls>
+        <source src="dustin_song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2023-2026 Familie Saufi🍻</p>
+  <p>Legenden seit 2023.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+  let overlay = document.getElementById("overlay");
+  
+  if (menu.style.width === "250px") {
+    menu.style.width = "0";
+    overlay.classList.remove("active");
+  } else {
+    menu.style.width = "250px";
+    overlay.classList.add("active");
+  }
+}
+
+// Aktuelle Seite im Menü hervorheben
+document.addEventListener("DOMContentLoaded", function() {
+  let links = document.querySelectorAll("#sideMenu a");
+  let currentPage = window.location.pathname.split("/").pop();
+  
+  links.forEach(link => {
+    let hrefPage = link.getAttribute("href");
+    if (hrefPage === currentPage) {
+      link.classList.add("activePage");
+    }
+  });
+});
+</script>
+
+</body>
+</html>

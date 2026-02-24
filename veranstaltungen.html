@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Veranstaltungen – Familie Saufi🍻</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: white;
+  background: radial-gradient(circle at 20% 30%, rgba(255,152,0,0.15), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(233,30,99,0.12), transparent 40%), 
+              #111;
+}
+
+/* Header */
+header {
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Nav */
+nav {
+  background-color: #000;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: black;
+  background-color: #ff9800;
+}
+
+/* aktive Seite */
+#sideMenu a.activePage {
+  background-color: #d35400;
+  color: white;
+  box-shadow: inset 5px 0 0 #f39c12;
+  font-weight: bold;
+}
+
+/* Inhalt */
+section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Accordion */
+.accordion {
+  background-color: #1f1f1f;
+  cursor: pointer;
+  padding: 18px 20px;
+  width: 100%;
+  border: 1px solid #ff9800;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.accordion:hover {
+  background-color: #2a2a2a;
+}
+
+.accordion i {
+  transition: transform 0.3s;
+}
+
+/* Panel */
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 10px;
+  justify-content: center;
+}
+
+.panel img {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.panel img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+#lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#lightboxOverlay img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 12px;
+}
+
+#lightboxOverlay .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+}
+
+#lightboxOverlay .prev,
+#lightboxOverlay .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+  padding: 20px;
+  user-select: none;
+}
+
+#lightboxOverlay .prev { left: 20px; }
+#lightboxOverlay .next { right: 20px; }
+
+#lightboxOverlay .prev:hover,
+#lightboxOverlay .next:hover {
+  color: #ff9800;
+}
+
+/* Side Menu */
+#sideMenu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+#sideMenu a {
+  padding: 12px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+#sideMenu a:hover {
+  background-color: #ff9800;
+  color: black;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  z-index: 900;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .panel img {
+    width: 45%;
+  }
+
+  #lightboxOverlay .prev,
+  #lightboxOverlay .next {
+    font-size: 45px;
+  }
+
+}
+
+/* Handy */
+@media (max-width: 480px) {
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  .panel {
+    justify-content: center;
+  }
+
+  .panel img {
+    width: 90%;
+  }
+
+  #lightboxOverlay .prev,
+  #lightboxOverlay .next {
+    font-size: 35px;
+    padding: 10px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<div id="sideMenu">
+  <a href="javascript:void(0)" class="closeBtn" onclick="toggleMenu()">×</a>
+  <a href="familiesaufi.html">Startseite 🏠</a>
+  <a href="mitglieder.html">Mitglieder 👨‍👩‍👧‍👦</a>
+  <a href="veranstaltungen.html">Veranstaltungen 📆</a>
+</div>
+
+<header>
+  <h1 style="font-size: 50px;">Unsere Veranstaltungen 📆</h1>
+</header>
+
+<nav>
+  <div class="menu-button">
+    <a href="#" onclick="toggleMenu()">☰ Menü</a>
+  </div>
+</nav>
+
+<main>
+<section>
+
+<!-- DEIN KOMPLETTER ACCORDION BEREICH BLEIBT UNVERÄNDERT -->
+<!-- (ich kürze hier nicht, weil du explizit alles behalten willst) -->
+
+<div class="accordion">Geburtstag David 2023 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="panel">
+  <img src="david23_1.jpg">
+  <img src="david23_2.jpg">
+  <img src="david23_3.jpg">
+  <img src="david23_4.jpg">
+  <img src="david23_5.jpg">
+  <img src="david23_6.jpg">
+  <img src="david23_7.jpg">
+  <img src="david23_8.jpg">
+  <img src="david23_9.jpg">
+  <img src="david23_10.jpg">
+  <img src="david23_11.jpg">
+  <img src="david23_12.jpg">
+  <img src="david23_13.jpg">
+  <img src="david23_14.jpg">
+  <img src="david23_15.jpg">
+  <img src="david23_16.jpg">
+  <img src="david23_17.jpg">
+  <img src="david23_18.jpg">
+  <img src="david23_19.jpg">
+  <img src="david23_20.jpg">
+</div>
+
+<div class="accordion">Geburtstag Esther 2024 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="panel">
+  <img src="esther24_1.jpg">
+  <img src="esther24_2.jpg">
+  <img src="esther24_3.jpg">
+  <img src="esther24_4.jpg">
+  <img src="esther24_5.jpg">
+  <img src="esther24_6.jpg">
+  <img src="esther24_7.jpg">
+  <img src="esther24_8.jpg">
+  <img src="esther24_9.jpg">
+  <img src="esther24_10.jpg">
+  <img src="esther24_11.jpg">
+  <img src="esther24_12.jpg">
+  <img src="esther24_13.jpg">
+  <img src="esther24_14.jpg">
+  <img src="esther24_15.jpg">
+  <img src="esther24_16.jpg">
+  <img src="esther24_17.jpg">
+  <img src="esther24_18.jpg">
+  <img src="esther24_19.jpg">
+  <img src="esther24_20.jpg">
+</div>
+
+<div class="accordion">Geburtstag David 2024 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="panel">
+  <img src="david24_1.jpg">
+  <img src="david24_2.jpg">
+  <img src="david24_3.jpg">
+  <img src="david24_4.jpg">
+  <img src="david24_5.jpg">
+  <img src="david24_6.jpg">
+  <img src="david24_7.jpg">
+  <img src="david24_8.jpg">
+  <img src="david24_9.jpg">
+  <img src="david24_10.jpg">
+  <img src="david24_11.jpg">
+  <img src="david24_12.jpg">
+  <img src="david24_13.jpg">
+  <img src="david24_14.jpg">
+  <img src="david24_15.jpg">
+  <img src="david24_16.jpg">
+</div>
+
+<div class="accordion">Silvester 2024 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="panel">
+  <img src="silvester24_1.jpg">
+  <img src="silvester24_2.jpg">
+  <img src="silvester24_3.jpg">
+  <img src="silvester24_4.jpg">
+  <img src="silvester24_5.jpg">
+  <img src="silvester24_6.jpg">
+  <img src="silvester24_7.jpg">
+  <img src="silvester24_8.jpg">
+  <img src="silvester24_9.jpg">
+  <img src="silvester24_10.jpg">
+  <img src="silvester24_11.jpg">
+  <img src="silvester24_12.jpg">
+  <img src="silvester24_13.jpg">
+  <img src="silvester24_14.jpg">
+  <img src="silvester24_15.jpg">
+  <img src="silvester24_16.jpg">
+  <img src="silvester24_17.jpg">
+  <img src="silvester24_18.jpg">
+  <img src="silvester24_19.jpg">
+  <img src="silvester24_20.jpg">
+</div>
+
+<div class="accordion">Silvester 2025 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="panel">
+  <img src="silvester25_1.jpg">
+  <img src="silvester25_2.jpg">
+  <img src="silvester25_3.jpg">
+  <img src="silvester25_4.jpg">
+  <img src="silvester25_5.jpg">
+  <img src="silvester25_6.jpg">
+  <img src="silvester25_7.jpg">
+  <img src="silvester25_8.jpg">
+  <img src="silvester25_9.jpg">
+  <img src="silvester25_10.jpg">
+  <img src="silvester25_11.jpg">
+  <img src="silvester25_12.jpg">
+  <img src="silvester25_13.jpg">
+  <img src="silvester25_14.jpg">
+  <img src="silvester25_15.jpg">
+  <img src="silvester25_16.jpg">
+  <img src="silvester25_17.jpg">
+  <img src="silvester25_18.jpg">
+  <img src="silvester25_19.jpg">
+  <img src="silvester25_20.jpg">
+</div>
+
+</section>
+</main>
+
+<div id="lightboxOverlay">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+  <img id="lightboxImage">
+  <span class="next" onclick="changeImage(1)">&#10095;</span>
+</div>
+
+<script>
+
+// Menü
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+  let overlay = document.getElementById("overlay");
+  if (menu.style.width === "250px") {
+    menu.style.width = "0";
+    overlay.classList.remove("active");
+  } else {
+    menu.style.width = "250px";
+    overlay.classList.add("active");
+  }
+}
+
+// Aktive Seite markieren
+document.addEventListener("DOMContentLoaded", function() {
+  let links = document.querySelectorAll("#sideMenu a");
+  let currentPage = window.location.pathname.split("/").pop() || "veranstaltungen.html";
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("activePage");
+    }
+  });
+});
+
+// Accordion (FIXED)
+let acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+
+    let panel = this.nextElementSibling;
+
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+      this.querySelector("i").style.transform = "rotate(0deg)";
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      this.querySelector("i").style.transform = "rotate(180deg)";
+    }
+
+  });
+}
+
+// LIGHTBOX (Panel-bezogen + Scroll-Fix)
+let currentImages = [];
+let currentIndex = 0;
+
+document.querySelectorAll(".panel img").forEach(img => {
+  img.addEventListener("click", function() {
+    let panel = this.closest(".panel");
+    currentImages = Array.from(panel.querySelectorAll("img"));
+    currentIndex = currentImages.indexOf(this);
+    openLightbox();
+  });
+});
+
+function openLightbox() {
+  document.body.style.overflow = "hidden";
+  document.getElementById("lightboxImage").src = currentImages[currentIndex].src;
+  document.getElementById("lightboxOverlay").style.display = "flex";
+}
+
+function closeLightbox() {
+  document.body.style.overflow = "auto";
+  document.getElementById("lightboxOverlay").style.display = "none";
+}
+
+function changeImage(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = currentImages.length - 1;
+  if (currentIndex >= currentImages.length) currentIndex = 0;
+  document.getElementById("lightboxImage").src = currentImages[currentIndex].src;
+}
+
+document.addEventListener("keydown", function(e) {
+  if (document.getElementById("lightboxOverlay").style.display === "flex") {
+    if (e.key === "ArrowRight") changeImage(1);
+    if (e.key === "ArrowLeft") changeImage(-1);
+    if (e.key === "Escape") closeLightbox();
+  }
+});
+
+</script>
+
+</body>
+</html>
