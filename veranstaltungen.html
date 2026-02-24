@@ -100,9 +100,9 @@ section {
   justify-content: center;
 }
 
-.panel img {
+.panel img,
+.panel video.panel-media {
   width: 180px;
-  max-width: 100%;
   height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
@@ -111,7 +111,8 @@ section {
   transition: transform 0.2s;
 }
 
-.panel img:hover {
+.panel img:hover,
+.panel video.panel-media:hover {
   transform: scale(1.05);
 }
 
@@ -129,7 +130,8 @@ section {
   z-index: 2000;
 }
 
-#lightboxOverlay img {
+#lightboxOverlay img,
+#lightboxOverlay video {
   max-width: 90%;
   max-height: 85%;
   border-radius: 12px;
@@ -224,7 +226,8 @@ section {
     font-size: 36px;
   }
 
-  .panel img {
+  .panel img,
+  .panel video.panel-media {
     width: 45%;
   }
 
@@ -246,7 +249,8 @@ section {
     justify-content: center;
   }
 
-  .panel img {
+  .panel img,
+  .panel video.panel-media {
     width: 90%;
   }
 
@@ -284,9 +288,7 @@ section {
 <main>
 <section>
 
-<!-- DEIN KOMPLETTER ACCORDION BEREICH BLEIBT UNVERÄNDERT -->
-<!-- (ich kürze hier nicht, weil du explizit alles behalten willst) -->
-
+<!-- Geburtstage David 2023 -->
 <div class="accordion">Geburtstag David 2023 <i class="fa-solid fa-chevron-down"></i></div>
 <div class="panel">
   <img src="david23_1.jpg">
@@ -311,6 +313,7 @@ section {
   <img src="david23_20.jpg">
 </div>
 
+<!-- Geburtstag Esther 2024 -->
 <div class="accordion">Geburtstag Esther 2024 <i class="fa-solid fa-chevron-down"></i></div>
 <div class="panel">
   <img src="esther24_1.jpg">
@@ -335,83 +338,96 @@ section {
   <img src="esther24_20.jpg">
 </div>
 
+<!-- Geburtstag David 2024 -->
 <div class="accordion">Geburtstag David 2024 <i class="fa-solid fa-chevron-down"></i></div>
 <div class="panel">
-  <img src="david24_1.jpg">
-  <img src="david24_2.jpg">
-  <img src="david24_3.jpg">
-  <img src="david24_4.jpg">
-  <img src="david24_5.jpg">
-  <img src="david24_6.jpg">
-  <img src="david24_7.jpg">
-  <img src="david24_8.jpg">
-  <img src="david24_9.jpg">
-  <img src="david24_10.jpg">
-  <img src="david24_11.jpg">
-  <img src="david24_12.jpg">
-  <img src="david24_13.jpg">
-  <img src="david24_14.jpg">
-  <img src="david24_15.jpg">
-  <img src="david24_16.jpg">
+  <img src="david24/david24_1.jpg">
+  <img src="david24/david24_2.jpg">
+  <img src="david24/david24_3.jpg">
+  <img src="david24/david24_4.jpg">
+  <img src="david24/david24_5.jpg">
+  <img src="david24/david24_6.jpg">
+  <img src="david24/david24_7.jpg">
+  <img src="david24/david24_8.jpg">
+  <img src="david24/david24_9.jpg">
+  <img src="david24/david24_10.jpg">
+  <img src="david24/david24_11.jpg">
+  <img src="david24/david24_12.jpg">
+  <img src="david24/david24_13.jpg">
+  <img src="david24/david24_14.jpg">
+  <img src="david24/david24_15.jpg">
+  <img src="david24/david24_16.jpg">
 </div>
 
+<!-- Silvester 2024 -->
 <div class="accordion">Silvester 2024 <i class="fa-solid fa-chevron-down"></i></div>
 <div class="panel">
-  <img src="silvester24_1.jpg">
-  <img src="silvester24_2.jpg">
-  <img src="silvester24_3.jpg">
-  <img src="silvester24_4.jpg">
-  <img src="silvester24_5.jpg">
-  <img src="silvester24_6.jpg">
-  <img src="silvester24_7.jpg">
-  <img src="silvester24_8.jpg">
-  <img src="silvester24_9.jpg">
-  <img src="silvester24_10.jpg">
-  <img src="silvester24_11.jpg">
-  <img src="silvester24_12.jpg">
-  <img src="silvester24_13.jpg">
-  <img src="silvester24_14.jpg">
-  <img src="silvester24_15.jpg">
-  <img src="silvester24_16.jpg">
-  <img src="silvester24_17.jpg">
-  <img src="silvester24_18.jpg">
-  <img src="silvester24_19.jpg">
-  <img src="silvester24_20.jpg">
+  <img src="silvester24/silvester24_1.jpg">
+  <img src="silvester24/silvester24_2.jpg">
+  <img src="silvester24/silvester24_3.jpg">
+  <img src="silvester24/silvester24_4.jpg">
+  <img src="silvester24/silvester24_5.jpg">
+  <img src="silvester24/silvester24_6.jpg">
+  <img src="silvester24/silvester24_7.jpg">
+  <img src="silvester24/silvester24_8.jpg">
+  <img src="silvester24/silvester24_9.jpg">
+  <img src="silvester24/silvester24_10.jpg">
+  <img src="silvester24/silvester24_11.jpg">
 </div>
 
+<!-- Silvester 2025 -->
 <div class="accordion">Silvester 2025 <i class="fa-solid fa-chevron-down"></i></div>
 <div class="panel">
-  <img src="silvester25_1.jpg">
-  <img src="silvester25_2.jpg">
-  <img src="silvester25_3.jpg">
-  <img src="silvester25_4.jpg">
-  <img src="silvester25_5.jpg">
-  <img src="silvester25_6.jpg">
-  <img src="silvester25_7.jpg">
-  <img src="silvester25_8.jpg">
-  <img src="silvester25_9.jpg">
-  <img src="silvester25_10.jpg">
-  <img src="silvester25_11.jpg">
-  <img src="silvester25_12.jpg">
-  <img src="silvester25_13.jpg">
-  <img src="silvester25_14.jpg">
-  <img src="silvester25_15.jpg">
-  <img src="silvester25_16.jpg">
-  <img src="silvester25_17.jpg">
-  <img src="silvester25_18.jpg">
-  <img src="silvester25_19.jpg">
-  <img src="silvester25_20.jpg">
+  <img src="silvester25/silvester25_1.jpg">
+  <img src="silvester25/silvester25_2.jpg">
+  <img src="silvester25/silvester25_3.jpg">
+  <img src="silvester25/silvester25_4.jpg">
+  <img src="silvester25/silvester25_5.jpg">
+  <img src="silvester25/silvester25_6.jpg">
+  <img src="silvester25/silvester25_7.jpg">
+  <img src="silvester25/silvester25_8.jpg">
+  <img src="silvester25/silvester25_9.jpg">
+  <img src="silvester25/silvester25_10.jpg">
+  <img src="silvester25/silvester25_11.jpg">
+  <img src="silvester25/silvester25_12.jpg">
+  <img src="silvester25/silvester25_13.jpg">
+  <img src="silvester25/silvester25_14.jpg">
+  <img src="silvester25/silvester25_15.jpg">
+  <img src="silvester25/silvester25_16.jpg">
+  <img src="silvester25/silvester25_17.jpg">
+  <img src="silvester25/silvester25_18.jpg">
+  <img src="silvester25/silvester25_19.jpg">
+  <img src="silvester25/silvester25_20.jpg">
+  <video controls class="panel-media">
+    <source src="silvester25/silvester25_1.mp4" type="video/mp4">
+    Dein Browser unterstützt dieses Video nicht.
+  </video>
+  <video controls class="panel-media">
+    <source src="silvester25/silvester25_2.mp4" type="video/mp4">
+    Dein Browser unterstützt dieses Video nicht.
+  </video>
+  <video controls class="panel-media">
+    <source src="silvester25/silvester25_3.mp4" type="video/mp4">
+    Dein Browser unterstützt dieses Video nicht.
+  </video>
+  <video controls class="panel-media">
+    <source src="silvester25/silvester25_4.mp4" type="video/mp4">
+    Dein Browser unterstützt dieses Video nicht.
+  </video>
+  <video controls class="panel-media">
+    <source src="silvester25/silvester25_5.mp4" type="video/mp4">
+    Dein Browser unterstützt dieses Video nicht.
+  </video>
+  <video controls class="panel-media">
+    <source src="silvester25/silvester25_6.mp4" type="video/mp4">
+    Dein Browser unterstützt dieses Video nicht.
+  </video>
 </div>
 
 </section>
 </main>
 
-<div id="lightboxOverlay">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <span class="prev" onclick="changeImage(-1)">&#10094;</span>
-  <img id="lightboxImage">
-  <span class="next" onclick="changeImage(1)">&#10095;</span>
-</div>
+<div id="lightboxOverlay"></div>
 
 <script>
 
@@ -439,13 +455,11 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-// Accordion (FIXED)
+// Accordion
 let acc = document.getElementsByClassName("accordion");
 for (let i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
-
     let panel = this.nextElementSibling;
-
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
       this.querySelector("i").style.transform = "rotate(0deg)";
@@ -453,51 +467,61 @@ for (let i = 0; i < acc.length; i++) {
       panel.style.maxHeight = panel.scrollHeight + "px";
       this.querySelector("i").style.transform = "rotate(180deg)";
     }
-
   });
 }
 
-// LIGHTBOX (Panel-bezogen + Scroll-Fix)
-let currentImages = [];
+// Lightbox für Bilder und Videos
+let currentMedia = [];
 let currentIndex = 0;
 
-document.querySelectorAll(".panel img").forEach(img => {
-  img.addEventListener("click", function() {
+document.querySelectorAll(".panel img, .panel video.panel-media").forEach(item => {
+  item.addEventListener("click", function() {
     let panel = this.closest(".panel");
-    currentImages = Array.from(panel.querySelectorAll("img"));
-    currentIndex = currentImages.indexOf(this);
-    openLightbox();
+    currentMedia = Array.from(panel.querySelectorAll("img, video.panel-media"));
+    currentIndex = currentMedia.indexOf(this);
+    openMediaLightbox();
   });
 });
 
-function openLightbox() {
+function openMediaLightbox() {
   document.body.style.overflow = "hidden";
-  document.getElementById("lightboxImage").src = currentImages[currentIndex].src;
-  document.getElementById("lightboxOverlay").style.display = "flex";
+  const lightbox = document.getElementById("lightboxOverlay");
+  lightbox.innerHTML = `
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeMedia(-1)">&#10094;</span>
+    <span class="next" onclick="changeMedia(1)">&#10095;</span>
+  `;
+  const current = currentMedia[currentIndex].cloneNode(true);
+  current.style.maxWidth = "90%";
+  current.style.maxHeight = "85%";
+  if(current.tagName === "VIDEO") current.controls = true;
+  lightbox.appendChild(current);
+  lightbox.style.display = "flex";
 }
+
+function changeMedia(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = currentMedia.length - 1;
+  if (currentIndex >= currentMedia.length) currentIndex = 0;
+  openMediaLightbox();
+}
+
+// Pfeiltasten für Lightbox
+document.addEventListener("keydown", function(e) {
+  const lightbox = document.getElementById("lightboxOverlay");
+  if (lightbox.style.display === "flex") {
+    if (e.key === "ArrowRight") changeMedia(1);
+    if (e.key === "ArrowLeft") changeMedia(-1);
+    if (e.key === "Escape") closeLightbox();
+  }
+});
 
 function closeLightbox() {
   document.body.style.overflow = "auto";
   document.getElementById("lightboxOverlay").style.display = "none";
 }
 
-function changeImage(direction) {
-  currentIndex += direction;
-  if (currentIndex < 0) currentIndex = currentImages.length - 1;
-  if (currentIndex >= currentImages.length) currentIndex = 0;
-  document.getElementById("lightboxImage").src = currentImages[currentIndex].src;
-}
-
-document.addEventListener("keydown", function(e) {
-  if (document.getElementById("lightboxOverlay").style.display === "flex") {
-    if (e.key === "ArrowRight") changeImage(1);
-    if (e.key === "ArrowLeft") changeImage(-1);
-    if (e.key === "Escape") closeLightbox();
-  }
-});
-
 </script>
 
 </body>
-
 </html>
